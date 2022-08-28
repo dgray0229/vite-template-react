@@ -1,45 +1,57 @@
-import { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react'
+import Template from './components/template'
+import { FoodColor, FoodFrequency, FoodPortions, FoodStyle, Name } from './pages'
+import { Container } from './layouts'
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [page, setPage] = useState(0)
+  const [data, setData] = useState({})
+  const [formData, setFormData] = useState({})
+  const [success, setSuccess] = useState(false)
+  const updateData = (obj) => {
+    const currentPage = data[page].id
+    setFormData({ ...formData, ...obj })
+    console.log(currentPage)
+    if (currentPage === 1) {
+      setSuccess(true)
+      setTimeout(nextStep, 2000)
+    }
+  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount(count => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  );
-};
+  const nextStep = () => {
+    setPage(page + 1)
+    setSuccess(false)
+  }
+  const prevStep = () => {
+    setPage(page - 1)
+  }
 
-export default App;
+  const fetchData = async () => {
+    try {
+      const response = await fetch('payload.json', { method: 'GET' })
+      const data = await response.json()
+      await setData(data)
+      await console.log(data)
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+    console.log(data[page])
+  }, [])
+  const ComponentsList = [<Name updateData={updateData} pageData={data[page]} success={success}/>,
+    <FoodStyle updateData={updateData} pageData={data[page]}/>,
+    <FoodPortions updateData={updateData} pageData={data[page]}/>,
+    <FoodColor updateData={updateData} pageData={data[page]}/>,
+    <FoodFrequency updateData={updateData} pageData={data[page]}/>]
+
+  return (<Container>
+    <Template pageData={data[page]}>
+      {ComponentsList[page]}
+    </Template>
+  </Container>)
+}
+
+export default App

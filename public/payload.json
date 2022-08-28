@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "title": "Let's get started, first what's your name?",
+    "type": "text",
+    "required": true,
+    "success": {
+      "label": "Nice to meet you, {{name}}"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Choose what's your usual food style",
+    "subtitle": "Tell us all that apply to you to help our nutritionists create your free report.",
+    "type": "checkbox",
+    "required": true,
+    "options": [
+      { "id": 1, "label": "All Foods" },
+      { "id": 2, "label": "Meat Lover" },
+      { "id": 3, "label": "Low or No Fat" },
+      { "id": 4, "label": "Gluten Free" },
+      { "id": 5, "label": "Healthy Foods Only" },
+      { "id": 6, "label": "Vegetarian or Vegan" },
+      { "id": 7, "label": "Fry It Up, Baby!" },
+      { "id": 8, "label": "Love My Carbs" }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "How do you like your food portions?",
+    "type": "range",
+    "required": true,
+    "options": [
+      { "id": 9, "label": "Small", "value": "0" },
+      { "id": 10, "label": "Medium", "value": "1-2" },
+      { "id": 11, "label": "Large", "value": "3+" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "How colorful is your food?",
+    "type": "range",
+    "required": true,
+    "options": [
+      {
+        "options": [
+          { "id": 9, "label": "No veggies", "value": "0" },
+          { "id": 11, "label": "Some veggies", "value": "1-2" },
+          { "id": 12, "label": "A lot of veggies", "value": "3+" }
+        ]
+      },
+      {
+        "options": [
+          { "id": 13, "label": "No fruit", "value": "0" },
+          { "id": 14, "label": "Some fruit", "value": "1-2" },
+          { "id": 15, "label": "A lot of fruit", "value": "3+" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Which one of these do you have 3+ times a week?",
+    "subtitle": "Select all that apply to you, or hit continue if none of these apply.",
+    "type": "checkbox",
+    "required": false,
+    "options": [
+      { "id": 16, "label": "Red Meat" },
+      { "id": 17, "label": "Fish" },
+      { "id": 18, "label": "Beans" },
+      { "id": 19, "label": "Eggs" },
+      { "id": 20, "label": "Tofu or Soy" },
+      { "id": 21, "label": "Chicken or Turkey" }
+    ]
+  }
+]
