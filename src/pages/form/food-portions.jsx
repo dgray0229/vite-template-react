@@ -5,7 +5,8 @@ import { Continue, Label } from "../../layouts";
 
 const FoodPortions = () => {
   const { nextStep, pageData, updateData, checkFormError, getFormData } = useContext(PaginationContext);
-  const initialState = getFormData()[pageData?.id] || "0"
+  const currentPageFormResults = getFormData()[pageData?.id];
+  const initialState = currentPageFormResults || "0"
   const [value, setValue] = useState(initialState)
   const submitData = () => {
     updateData({ [pageData.id]: value });

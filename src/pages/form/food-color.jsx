@@ -6,8 +6,9 @@ import Slider from "../../components/range";
 const FoodColor =
   () => {
     const { nextStep, pageData, updateData, checkFormError, getFormData } = useContext(PaginationContext);
-    const initialFruitState = getFormData()[pageData?.id][0] || "0"
-    const initialVegState = getFormData()[pageData?.id][1] || "0"
+    const currentPageFormResults = getFormData()[pageData?.id];
+    const initialFruitState = currentPageFormResults[0] || "0"
+    const initialVegState = currentPageFormResults[1] || "0"
 
     const [fruitValue, setFruitValue] = useState(initialFruitState)
     const [vegValue, setVegValue] = useState(initialVegState);

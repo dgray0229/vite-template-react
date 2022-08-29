@@ -13,7 +13,8 @@ const CardContainer = styled.div`
 
 const CheckboxList = () => {
   const { updateData, pageData, nextStep, checkFormError, getFormData } = useContext(PaginationContext);
-  const initialState = getFormData()[pageData?.id] || []
+  const currentPageFormResults = getFormData()[pageData?.id];
+  const initialState = currentPageFormResults || []
 
   const [selections, setSelections] = useState(initialState);
   const addToList = (item) => {
@@ -33,7 +34,6 @@ const CheckboxList = () => {
   }
   const handleButtonSubmit = () => {
     const isValid = checkFormError(selections, "Please make a selection");
-    console.log(isValid, selections)
     if (!isValid) { return  false }
     submitData();
   }

@@ -18,8 +18,7 @@ const App = () => {
   const checkIfFalsy = (value) => {
     if (value === undefined) return false
     if (Array.isArray(value) && value.length === 0) return false
-    if (value === typeof "number" && value === 0) return false
-    if (value === typeof "string" && value.length === 0) return false
+    if (value.length === 0 || value === "") return false
     return true
   }
   const calculateProgress = (currentItem, totalItems) => Math.round((currentItem / totalItems) * 100)

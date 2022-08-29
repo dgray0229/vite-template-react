@@ -8,9 +8,6 @@ const Results = styled.div`
 `
 const ThankYou = () => {
   const { getFormData } = useContext(PaginationContext);
-  useEffect(() => {
-    console.log(getFormData());
-  }, []);
   return (<Results>
     <Headline>Thank You For Completing The Quiz</Headline>
     <SubTitle>Your responses are posted below</SubTitle>
