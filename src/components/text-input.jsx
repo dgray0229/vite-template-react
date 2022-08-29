@@ -8,8 +8,9 @@ const NameInput = styled(Input)`
   justify-content: center
 `
 const InputName = ({ setSuccess, success }) => {
-  const { pageData, updateData, nextStep, checkFormError } = useContext(PaginationContext);
-  const [formValue, setFormValue] = useState('')
+  const { pageData, updateData, nextStep, checkFormError, getFormData } = useContext(PaginationContext);
+  const initialState = getFormData()[pageData?.id] || ''
+  const [formValue, setFormValue] = useState(initialState)
   const successLabel = pageData?.success?.label ? pageData?.success?.label.replace(/{{name}}/, formValue) : pageData?.success?.label
   const buttonValue = success ? successLabel : 'Continue'
   const submitData = () => {

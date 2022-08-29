@@ -4,8 +4,9 @@ import Slider from "../../components/range";
 import { Continue, Label } from "../../layouts";
 
 const FoodPortions = () => {
-  const { nextStep, pageData, updateData, checkFormError } = useContext(PaginationContext);
-  const [value, setValue] = useState("0")
+  const { nextStep, pageData, updateData, checkFormError, getFormData } = useContext(PaginationContext);
+  const initialState = getFormData()[pageData?.id] || "0"
+  const [value, setValue] = useState(initialState)
   const submitData = () => {
     updateData({ [pageData.id]: value });
     setTimeout(nextStep, 2000)

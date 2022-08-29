@@ -5,9 +5,12 @@ import Slider from "../../components/range";
 
 const FoodColor =
   () => {
-    const { nextStep, pageData, updateData, checkFormError } = useContext(PaginationContext);
-    const [fruitValue, setFruitValue] = useState("0")
-    const [vegValue, setVegValue] = useState("0");
+    const { nextStep, pageData, updateData, checkFormError, getFormData } = useContext(PaginationContext);
+    const initialFruitState = getFormData()[pageData?.id][0] || "0"
+    const initialVegState = getFormData()[pageData?.id][1] || "0"
+
+    const [fruitValue, setFruitValue] = useState(initialFruitState)
+    const [vegValue, setVegValue] = useState(initialVegState);
     const submitData = () => {
       updateData({ [pageData.id]: [fruitValue, vegValue] });
       setTimeout(nextStep, 2000)

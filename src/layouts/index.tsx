@@ -2,11 +2,14 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   max-width: 1600px;
   margin: 0 auto;
+  padding: 1rem 5rem;
   color: #232323;
+  width:auto;
 `
 const Image = styled.img`
   max-width: 300px;

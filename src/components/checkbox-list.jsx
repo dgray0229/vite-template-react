@@ -12,8 +12,10 @@ const CardContainer = styled.div`
 `
 
 const CheckboxList = () => {
-  const [selections, setSelections] = useState([]);
-  const { updateData, pageData, nextStep, checkFormError } = useContext(PaginationContext);
+  const { updateData, pageData, nextStep, checkFormError, getFormData } = useContext(PaginationContext);
+  const initialState = getFormData()[pageData?.id] || []
+
+  const [selections, setSelections] = useState(initialState);
   const addToList = (item) => {
     setSelections(prevArray => [...prevArray, item]
     )

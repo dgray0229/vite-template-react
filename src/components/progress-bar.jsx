@@ -5,7 +5,7 @@ const ProgressBar = ({ bgcolor, completed }) => {
 
   const ProgressBarContainer = styled.div`
     height: 20px;
-    width: 100%;
+    width: auto;
     background-color: #e0e0de;
     border-radius: 50px;
     margin: 50px;
