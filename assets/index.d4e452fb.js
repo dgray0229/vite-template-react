@@ -149,7 +149,7 @@ Error generating stack: `+o.message+`
   left: 0;
 `,Gm=b(sd)`
   right: 0;
-`,Xm=({children:e})=>{const{completed:t,pageData:n,error:r,errorMessage:l,prevStep:o,nextStep:i,getFormData:u,checkFormError:s}=J.exports.useContext(pn),c=()=>{const v=u()[n==null?void 0:n.id];s(v)&&i()},h=v=>{const p=u()[(n==null?void 0:n.id)-1];s(p)&&o()};return lt(cn,{children:[O($o,{src:"logotype.svg"}),(n==null?void 0:n.title)&&O(Fm,{children:n==null?void 0:n.title}),(n==null?void 0:n.subtitle)&&O(id,{children:n==null?void 0:n.subtitle}),e,r&&O(Wm,{message:l}),O(Qm,{bgcolor:"#E10098",completed:t}),lt(Ym,{children:[O(Km,{onClick:h,children:"\u21D0"}),O(Gm,{onClick:c,children:"\u21D2"})]})]})},Zm=b.fieldset`
+`,Xm=({children:e})=>{const{completed:t,pageData:n,error:r,errorMessage:l,prevStep:o,nextStep:i,getFormData:u,checkFormError:s}=J.exports.useContext(pn),c=()=>{if(t===100)return!1;const v=u()[n==null?void 0:n.id];s(v)&&i()},h=v=>{if(t===100)return!1;const p=u()[(n==null?void 0:n.id)-1];s(p)&&o()};return lt(cn,{children:[O($o,{src:"logotype.svg"}),(n==null?void 0:n.title)&&O(Fm,{children:n==null?void 0:n.title}),(n==null?void 0:n.subtitle)&&O(id,{children:n==null?void 0:n.subtitle}),e,r&&O(Wm,{message:l}),O(Qm,{bgcolor:"#E10098",completed:t}),lt(Ym,{children:[O(Km,{onClick:h,children:"\u21D0"}),O(Gm,{onClick:c,children:"\u21D2"})]})]})},Zm=b.fieldset`
   border: none;
 `,Jm=b.div`
   display: flex;
@@ -179,7 +179,7 @@ Error generating stack: `+o.message+`
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #04AA6D;
+    background: #E10098;
     cursor: pointer;
   }
 
@@ -187,7 +187,7 @@ Error generating stack: `+o.message+`
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #04AA6D;
+    background: #E10098;
     cursor: pointer;
   }
 `,e0=b.svg`
@@ -196,7 +196,7 @@ Error generating stack: `+o.message+`
 `,t0=b.rect`
   padding: .0625rem;
   margin: 0 10px;
-`,ad=e=>{const{options:t}=e;return lt(Zm,{className:"slidecontainer",children:[O(Jm,{children:t.map(({id:n})=>O($o,{src:"placeholder.png"},n))}),O(bm,ps(Kn({type:"range",className:"slider"},e),{required:!0})),O(e0,{role:"slider",width:"100%",height:"10",children:t.map(({value:n,id:r},l)=>O(t0,{className:"range__tick",value:n,x:`${l/(t.length-1)*100}%`,y:"3",width:"2",height:"10"},r))}),O(qm,{children:t.map(({label:n})=>O("p",{children:n},n))})]})},n0=()=>{const{nextStep:e,pageData:t,updateData:n,checkFormError:r,getFormData:l}=J.exports.useContext(pn),o=l()[t==null?void 0:t.id],i=o[0]||"0",u=o[1]||"0",[s,c]=J.exports.useState(i),[h,v]=J.exports.useState(u),p=()=>{n({[t.id]:[s,h]}),setTimeout(e,2e3)},w=a=>{if(!r(a,"Please make a selection"))return!1;p()},y=({target:a})=>{c(a.value)},x=({target:a})=>{v(a.value)},z=[s,h],f=[y,x];return lt(cn,{children:[t.options.map(({options:a},d)=>lt("div",{children:[O(cs,{htmlFor:"food-color-slider",children:"Food Color"}),O(ad,{value:z[d],min:"1",max:"3",name:"food-color-slider",onChange:f[d],options:a,step:"1"})]},d)),O(Ro,{name:"food-portions-slider",type:"button",value:"Continue",onClick:w})]})},r0=b.div`
+`,ad=e=>{const{options:t}=e;return lt(Zm,{className:"slidecontainer",children:[O(Jm,{children:t.map(({id:n})=>O($o,{src:"placeholder.png"},n))}),O(bm,ps(Kn({type:"range",className:"slider"},e),{required:!0})),O(e0,{role:"slider",width:"100%",height:"10",children:t.map(({value:n,id:r},l)=>O(t0,{className:"range__tick",value:n,x:`${l/(t.length-1)*100}%`,y:"3",width:"2",height:"10"},r))}),O(qm,{children:t.map(({label:n})=>O("p",{children:n},n))})]})},n0=()=>{const{nextStep:e,pageData:t,updateData:n,checkFormError:r,getFormData:l}=J.exports.useContext(pn),o=l()[(t==null?void 0:t.id)||!1],i=o?o[0]:null,u=o?o[1]:null,[s,c]=J.exports.useState(i),[h,v]=J.exports.useState(u),p=()=>{n({[t.id]:[s,h]}),setTimeout(e,2e3)},w=a=>{if(!r(a,"Please make a selection"))return!1;p()},y=({target:a})=>{c(a.value)},x=({target:a})=>{v(a.value)},z=[s,h],f=[y,x];return lt(cn,{children:[t.options.map(({options:a},d)=>lt("div",{children:[O(cs,{htmlFor:"food-color-slider",children:"Food Color"}),O(ad,{value:z[d],min:"1",max:"3",name:"food-color-slider",onChange:f[d],options:a,step:"1"})]},d)),O(Ro,{name:"food-portions-slider",type:"button",value:"Continue",onClick:w})]})},r0=b.div`
   position: relative;
 
   .card-body {
