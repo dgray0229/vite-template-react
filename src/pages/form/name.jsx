@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import InputName from "../../components/name";
+import InputName from "../../components/text-input";
 
-const Name = (props) => (<InputName g{...props} />);
+const Name = (props) => (<InputName {...props} />);
 
 export default Name;

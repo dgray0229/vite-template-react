@@ -28,4 +28,21 @@ const Input = styled.input`
   }
 `
 
-export { Container, Image, Headline, Input }
+const Continue = styled(Input)`
+  &[type=button] {
+    background-color: pink;
+    color: white;
+    display: block;
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+  }
+`
+
+const Label = styled.label`
+  visibility: hidden;
+`
+
+
+
+export { Continue, Container, Image, Headline, Input, Label }

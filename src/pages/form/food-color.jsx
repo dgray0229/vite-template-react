@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import InputName from '../../components/name'
+import InputName from '../../components/text-input'
 
 const FoodColor =
   ({ getData }) => {

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { Image, Input } from '../layouts'
 
-const Card = styled.div`
+const Checkbox = styled.div`
   position: relative;
 
   .card-body {
@@ -40,17 +40,29 @@ const CardInput = styled(Input)`
   }
 `
 
-const CardComponent = ({ label }) => {
-  const [selections, setSelections] = useState([])
+const CardComponent = ({ id, label, addToList, removeFromList }) => {
+  const [check, setCheck] = useState(false)
+  const handleChange = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      addToList(value)
+      setCheck(true)
+    } else {
+      removeFromList(value)
+      setCheck(false);
+    }
+  }
+  const checkmark = <>&#10004;</>
+  const cross = <>&#10005;</>
   return (
-    <Card>
-      <CardInput type="checkbox"/>
+    <Checkbox>
+      <CardInput type="checkbox" value={id} onChange={handleChange}/>
       <div className="card-body">
-        <i>+</i>
+        <i>{check ? checkmark : cross}</i>
         <Image src="https://via.placeholder.com/300.jpg"/>
         <p>{label}</p>
       </div>
-    </Card>
+    </Checkbox>
   )
 }
 

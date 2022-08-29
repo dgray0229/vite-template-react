@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import CardList from '../../components/card-list'
+import CheckboxList from '../../components/checkbox-list'
 
-const FoodStyle =
-    (props) => <CardList {...props} />
+const FoodStyle = () => <CheckboxList />
 
 export default FoodStyle

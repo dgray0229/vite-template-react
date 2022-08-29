@@ -1,17 +1,37 @@
-import React, { useState } from "react";
-import InputName from "../../components/name";
+import React, { useContext, useState } from "react";
+import PaginationContext from "../../utils/paginationContext";
+import Slider from "../../components/range";
+import { Continue, Label } from "../../layouts";
 
-const FoodPortions = ({getData}) => {
-	const [count, setCount] = useState(0);
+const FoodPortions = () => {
+  const { nextStep, pageData, updateData } = useContext(PaginationContext);
+  const [value, setValue] = useState("0")
+  const checkIfEmpty = (value) => {
+    if (!value) {
+      alert("Please make a selection");
+      return false;
+    }
+  }
+  const submitData = () => {
+    updateData({ [pageData.id]: value });
+    setTimeout(nextStep, 2000)
+  }
+  const handleButtonSubmit = () => {
+    checkIfEmpty(value);
+    submitData();
+  }
 
-	return (
-		<div className="App">
-			<header className="App-header"></header>
-			<h1>Let's get started, first, what's your name?</h1>
-			<InputName getData={getData} />
-            
-		</div>
-	);
+  const handleSliderChange = ({target}) => {
+    setValue(target.value);
+  }
+
+  return (
+    <>
+      <Label htmlFor='food-portions-slider'>Food Portions</Label>
+      <Slider value={value} min="1" max="3" defaultValue={"2"} name="food-portions-slider" onChange={handleSliderChange} options={pageData.options} step={"1"} />
+      <Continue name="food-portions-slider" type="button" value="Continue" onClick={handleButtonSubmit}/>
+    </>
+  );
 };
 
 export default FoodPortions;
