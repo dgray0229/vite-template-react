@@ -35,7 +35,7 @@ const ValueSlider = styled.input`
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #04AA6D;
+    background: #E10098;
     cursor: pointer;
   }
 
@@ -43,7 +43,7 @@ const ValueSlider = styled.input`
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #04AA6D;
+    background: #E10098;
     cursor: pointer;
   }
 `

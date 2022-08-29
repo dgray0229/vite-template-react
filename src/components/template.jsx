@@ -43,11 +43,13 @@ const Template = ({ children }) => {
     checkFormError
   } = useContext(PaginationContext)
   const handleNextPage = () => {
+    if (completed === 100) return false
     const currentPageFormResults = getFormData()[pageData?.id];
     const isValid = checkFormError(currentPageFormResults);
     if (isValid) nextStep();
   }
   const handlePrevPage = (cb) => {
+    if (completed === 100) return false
     const previousPageFormResults = getFormData()[pageData?.id - 1];
     const isValid = checkFormError(previousPageFormResults);
     if (isValid) prevStep();
