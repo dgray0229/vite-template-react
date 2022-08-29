@@ -22,6 +22,7 @@ const App = () => {
     if (value === typeof "string" && value.length === 0) return false
     return true
   }
+  const calculateProgress = (currentItem, totalItems) => Math.round((currentItem / totalItems) * 100)
   const checkFormError = (formData, message = "Please enter all required fields") => {
     const isValid = checkIfFalsy(formData)
     if (!isValid) {
@@ -61,13 +62,21 @@ const App = () => {
       <FoodPortions/>,
       <FoodColor/>,
       <FoodFrequency/>,
-      <ThankYou />
+      <ThankYou/>
     ];
 
     return ComponentsList[page];
   }
   const providerValues = {
-    updateData, pageData: data[page], nextStep, prevStep, getFormData, checkFormError, error, errorMessage
+    updateData,
+    pageData: data[page],
+    nextStep,
+    prevStep,
+    getFormData,
+    checkFormError,
+    error,
+    errorMessage,
+    completed: calculateProgress(page, data.length)
   }
   return (<Container>
     <PaginationProvider value={providerValues}>

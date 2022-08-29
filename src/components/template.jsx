@@ -1,26 +1,19 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
 import PaginationContext from "../utils/paginationContext";
-import { Image } from "../layouts";
+import { Image, SubTitle, Title } from "../layouts";
 import Error from "./error";
+import ProgressBar from "./progress-bar";
 
-const Title = styled.h1`
-  text-align: center;
-  text-transform: uppercase;
-`
-const SubTitle = styled.h2`
-  text-align: center;
-  text-transform: uppercase;
-`
 const Template = ({ children }) => {
-const { pageData, error, errorMessage } = useContext(PaginationContext)
+  const { completed, pageData, error, errorMessage } = useContext(PaginationContext)
   return (
     <>
-      <Image src="logotype.svg"  />
+      <Image src="logotype.svg"/>
       {pageData?.title && <Title>{pageData?.title}</Title>}
       {pageData?.subtitle && <SubTitle>{pageData?.subtitle}</SubTitle>}
       {children}
-      {error && <Error message={errorMessage} />}
+      {error && <Error message={errorMessage}/>}
+      <ProgressBar bgcolor="#E10098" completed={completed}/>
     </>
   )
 }

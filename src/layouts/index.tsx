@@ -47,6 +47,14 @@ const Label = styled.label`
   visibility: hidden;
 `
 
+const Title = styled.h1`
+  text-align: center;
+  text-transform: uppercase;
+`
+const SubTitle = styled.h2`
+  text-align: center;
+  text-transform: uppercase;
+`
 
 
-export { Continue, Container, Image, Headline, Input, Label }
+export {Continue, Container, Image, Headline, Input, Label, Title, SubTitle}
