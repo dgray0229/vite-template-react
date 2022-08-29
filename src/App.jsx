@@ -5,16 +5,35 @@ import { Container } from './layouts'
 import { PaginationProvider } from "./utils/paginationContext";
 
 const App = () => {
-  const [page, setPage] = useState(0)
-  const [data, setData] = useState({})
-  const [formData, setFormData] = useState({})
-  const [success, setSuccess] = useState(false)
-
+  const [page, setPage] = useState(0);
+  const [data, setData] = useState({});
+  const [formData, setFormData] = useState({});
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("Please enter all required fields");
   const updateData = (obj) => {
     setFormData({ ...formData, ...obj })
   }
-
   const getFormData = () => formData
+  const checkIfFalsy = (value) => {
+    if (value === undefined) return false
+    if (Array.isArray(value) && value.length === 0) return false
+    if (value === typeof "number" && value === 0) return false
+    if (value === typeof "string" && value.length === 0) return false
+    return true
+  }
+  const checkFormError = (formData, message = "Please enter all required fields") => {
+    const isValid = checkIfFalsy(formData)
+    if (!isValid) {
+      setError(true);
+      setErrorMessage(message);
+      return false;
+    } else {
+      setError(false);
+      setErrorMessage(message);
+      return true;
+    }
+  }
   const nextStep = () => {
     setPage(page + 1)
   }
@@ -48,7 +67,7 @@ const App = () => {
     return ComponentsList[page];
   }
   const providerValues = {
-    updateData, pageData: data[page], nextStep, prevStep, getFormData
+    updateData, pageData: data[page], nextStep, prevStep, getFormData, checkFormError, error, errorMessage
   }
   return (<Container>
     <PaginationProvider value={providerValues}>

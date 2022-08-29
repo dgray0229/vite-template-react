@@ -5,21 +5,16 @@ import Slider from "../../components/range";
 
 const FoodColor =
   () => {
-    const { nextStep, pageData, updateData } = useContext(PaginationContext);
+    const { nextStep, pageData, updateData, checkFormError } = useContext(PaginationContext);
     const [fruitValue, setFruitValue] = useState("0")
     const [vegValue, setVegValue] = useState("0");
-    const checkIfEmpty = (value) => {
-      if (!value) {
-        alert("Please make a selection");
-        return false;
-      }
-    }
     const submitData = () => {
       updateData({ [pageData.id]: [fruitValue, vegValue] });
       setTimeout(nextStep, 2000)
     }
     const handleButtonSubmit = (submitValue) => {
-      checkIfEmpty(submitValue);
+      const isValid = checkFormError(submitValue, "Please make a selection");
+      if (!isValid) { return false }
       submitData();
     }
 

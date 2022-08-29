@@ -1,17 +1,21 @@
 import React, { useContext, useEffect } from "react";
-import { Headline } from "../../layouts";
+import { Headline, SubTitle } from "../../layouts";
 import PaginationContext from "../../utils/paginationContext";
+import styled from "styled-components";
 
+const Results = styled.div`
+  margin: .3rem auto;
+`
 const ThankYou = () => {
   const { getFormData } = useContext(PaginationContext);
   useEffect(() => {
     console.log(getFormData());
   }, []);
-  return (<div>
+  return (<Results>
     <Headline>Thank You For Completing The Quiz</Headline>
-    <p>Your responses are posted below</p>
+    <SubTitle>Your responses are posted below</SubTitle>
     <pre>{JSON.stringify(getFormData(), null, 4)}</pre>
-  </div>)
+  </Results>)
 };
 
 export default ThankYou;

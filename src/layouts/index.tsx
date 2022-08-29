@@ -15,8 +15,11 @@ const Image = styled.img`
 `
 const Headline = styled.h1`
   text-transform: uppercase;
+  text-align: center;
 `
 const Input = styled.input`
+  border-radius: 1rem;
+
   margin: 1rem auto;
   display: block;
   width: 300px;
@@ -35,7 +38,7 @@ const Continue = styled(Input)`
     color: white;
     display: block;
     font-size: 1.5rem;
-    padding: .5rem 1rem;
+    padding: .5rem 3rem;
     text-transform: uppercase;
   }
 `

@@ -13,7 +13,7 @@ const CardContainer = styled.div`
 
 const CheckboxList = () => {
   const [selections, setSelections] = useState([]);
-  const { updateData, pageData, nextStep } = useContext(PaginationContext);
+  const { updateData, pageData, nextStep, checkFormError } = useContext(PaginationContext);
   const addToList = (item) => {
     setSelections(prevArray => [...prevArray, item]
     )
@@ -25,18 +25,14 @@ const CheckboxList = () => {
   const cardMap = pageData?.options.map(({ id, label }) => (
     <CardComponent key={id} id={id} label={label} addToList={addToList} removeFromList={removeFromList}/>
   ));
-  const checkIfEmpty = (value) => {
-    if (!value) {
-      alert("Please make a selection");
-      return false;
-    }
-  }
   const submitData = () => {
     updateData({ [pageData.id]: selections });
     nextStep();
   }
   const handleButtonSubmit = () => {
-    checkIfEmpty(selections);
+    const isValid = checkFormError(selections, "Please make a selection");
+    console.log(isValid, selections)
+    if (!isValid) { return  false }
     submitData();
   }
 

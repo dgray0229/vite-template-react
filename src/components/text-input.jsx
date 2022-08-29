@@ -8,16 +8,10 @@ const NameInput = styled(Input)`
   justify-content: center
 `
 const InputName = ({ setSuccess, success }) => {
-  const { pageData, updateData, nextStep } = useContext(PaginationContext);
+  const { pageData, updateData, nextStep, checkFormError } = useContext(PaginationContext);
   const [formValue, setFormValue] = useState('')
   const successLabel = pageData?.success?.label ? pageData?.success?.label.replace(/{{name}}/, formValue) : pageData?.success?.label
   const buttonValue = success ? successLabel : 'Continue'
-  const checkIfEmpty = (formData) => {
-    if (!formData) {
-      alert('Name must be filled out');
-      return false;
-    }
-  }
   const submitData = () => {
     updateData({ [pageData.id]: formValue });
     setSuccess(true);
@@ -28,13 +22,17 @@ const InputName = ({ setSuccess, success }) => {
   }
   const handleKeyboardSubmit = ({ code, target }) => {
     if (code === 'Enter' || code === 'NumpadEnter') {
-      checkIfEmpty(target.value);
+      const isValid = checkFormError(target.value, 'Name must be filled out');
+      console.log(isValid)
+      if (!isValid) { return false }
       console.log('Enter key was pressed. Run your function.')
       submitData();
     }
   }
   const handleButtonSubmit = () => {
-    checkIfEmpty(formValue);
+    const isValid = checkFormError(formValue, 'Name must be filled out');
+    console.log(isValid)
+    if (!isValid) { return false }
     submitData();
   }
   return (<>

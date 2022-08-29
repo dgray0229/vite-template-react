@@ -4,20 +4,15 @@ import Slider from "../../components/range";
 import { Continue, Label } from "../../layouts";
 
 const FoodPortions = () => {
-  const { nextStep, pageData, updateData } = useContext(PaginationContext);
+  const { nextStep, pageData, updateData, checkFormError } = useContext(PaginationContext);
   const [value, setValue] = useState("0")
-  const checkIfEmpty = (value) => {
-    if (!value) {
-      alert("Please make a selection");
-      return false;
-    }
-  }
   const submitData = () => {
     updateData({ [pageData.id]: value });
     setTimeout(nextStep, 2000)
   }
   const handleButtonSubmit = () => {
-    checkIfEmpty(value);
+    const isValid = checkFormError(value, "Please make a selection");
+    if (!isValid) { return false }
     submitData();
   }
 
