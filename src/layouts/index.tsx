@@ -6,6 +6,7 @@ const Container = styled.div`
   justify-content: center;
   max-width: 1600px;
   margin: 0 auto;
+  color: #232323;
 `
 const Image = styled.img`
   max-width: 300px;
@@ -30,7 +31,7 @@ const Input = styled.input`
 
 const Continue = styled(Input)`
   &[type=button] {
-    background-color: pink;
+    background-color: #E10098;
     color: white;
     display: block;
     font-size: 1.5rem;

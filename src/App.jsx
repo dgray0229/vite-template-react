@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Template from './components/template'
-import { FoodColor, FoodFrequency, FoodPortions, FoodStyle, Name } from './pages'
+import { FoodColor, FoodFrequency, FoodPortions, FoodStyle, Name, ThankYou } from './pages'
 import { Container } from './layouts'
 import { PaginationProvider } from "./utils/paginationContext";
 
@@ -14,6 +14,7 @@ const App = () => {
     setFormData({ ...formData, ...obj })
   }
 
+  const getFormData = () => formData
   const nextStep = () => {
     setPage(page + 1)
   }
@@ -40,13 +41,14 @@ const App = () => {
       <FoodStyle/>,
       <FoodPortions/>,
       <FoodColor/>,
-      <FoodFrequency/>
+      <FoodFrequency/>,
+      <ThankYou />
     ];
 
     return ComponentsList[page];
   }
   const providerValues = {
-    updateData, pageData: data[page], nextStep, prevStep
+    updateData, pageData: data[page], nextStep, prevStep, getFormData
   }
   return (<Container>
     <PaginationProvider value={providerValues}>

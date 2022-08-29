@@ -3,7 +3,7 @@ import PaginationContext from "../../utils/paginationContext";
 import { Continue, Label } from "../../layouts";
 import Slider from "../../components/range";
 
-const FoodColor =
+const RangeGroup =
   () => {
     const { nextStep, pageData, updateData } = useContext(PaginationContext);
     const [fruitValue, setFruitValue] = useState("0")
@@ -15,7 +15,7 @@ const FoodColor =
       }
     }
     const submitData = () => {
-      updateData({ [pageData.id]: [fruitValue, vegValue] });
+      updateData({ [pageData.id]: value });
       setTimeout(nextStep, 2000)
     }
     const handleButtonSubmit = (submitValue) => {
@@ -33,13 +33,13 @@ const FoodColor =
     const setValueArray = [handleFruitSliderChange, handleVegSliderChange];
     return (
       <>
-        {pageData.options.map(({ options }, index) => {
+        {pageData.options.map((sliderOptions, index) => {
           return (
-            <div key={index}>
-              <Label htmlFor='food-color-slider'>Food Color</Label>
+            <>
+              <Label htmlFor='food-color-slider'>{label}</Label>
               <Slider value={valueArray[index]} min="1" max="3" name="food-color-slider" onChange={setValueArray[index]}
-                      options={options} step={"1"}/>
-            </div>
+                      options={sliderOptions} step={"1"}/>
+            </>
           )
         })}
         <Continue name="food-portions-slider" type="button" value="Continue" onClick={handleButtonSubmit}/>
@@ -47,4 +47,4 @@ const FoodColor =
     );
   }
 
-export default FoodColor
+export default RangeGroup

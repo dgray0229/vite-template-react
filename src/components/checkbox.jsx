@@ -35,7 +35,7 @@ const CardInput = styled(Input)`
 
   &:checked {
     & ~ .card-body {
-      border: 3px solid black;
+      border: 3px solid #232323;
     }
   }
 `

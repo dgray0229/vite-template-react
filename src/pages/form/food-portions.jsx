@@ -28,7 +28,7 @@ const FoodPortions = () => {
   return (
     <>
       <Label htmlFor='food-portions-slider'>Food Portions</Label>
-      <Slider value={value} min="1" max="3" defaultValue={"2"} name="food-portions-slider" onChange={handleSliderChange} options={pageData.options} step={"1"} />
+      <Slider value={value} min="1" max="3" name="food-portions-slider" onChange={handleSliderChange} options={pageData.options} step={"1"} />
       <Continue name="food-portions-slider" type="button" value="Continue" onClick={handleButtonSubmit}/>
     </>
   );
