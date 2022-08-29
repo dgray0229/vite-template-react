@@ -38,7 +38,7 @@ const InputName = ({ setSuccess, success }) => {
   }
   return (<>
     <Label htmlFor="name" id="label-name">Name</Label>
-    <Image src="https://via.placeholder.com/300.jpg"/>
+    <Image src="placeholder.png" alt="placeholder image"/>
     <NameInput
       type="text"
       id="name"

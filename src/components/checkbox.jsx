@@ -59,7 +59,7 @@ const CardComponent = ({ id, label, addToList, removeFromList }) => {
       <CardInput type="checkbox" value={id} onChange={handleChange}/>
       <div className="card-body">
         <i>{check ? checkmark : cross}</i>
-        <Image src="https://via.placeholder.com/300.jpg"/>
+        <Image src="placeholder.png"/>
         <p>{label}</p>
       </div>
     </Checkbox>

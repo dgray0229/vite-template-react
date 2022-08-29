@@ -61,7 +61,7 @@ const Slider = (props) => {
     <Fieldset className="slidecontainer">
       <ImageContainer>
         {options.map(({ id }) =>
-          <Image src="https://via.placeholder.com/150.jpg" key={id}/>
+          <Image src="placeholder.png" key={id}/>
         )}
       </ImageContainer>
       <ValueSlider type="range" className="slider" {...props} required />
