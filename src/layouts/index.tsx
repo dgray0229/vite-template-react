@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
+  box-sizing: border-box;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -12,6 +13,7 @@ const Container = styled.div`
   width:auto;
 `
 const Image = styled.img`
+  max-height: 300px;
   max-width: 300px;
   display: block;
   margin: auto;

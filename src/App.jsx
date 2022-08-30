@@ -40,6 +40,11 @@ const App = () => {
   const prevStep = () => {
     setPage(page - 1)
   }
+  const startOver = () => {
+    setSuccess(false);
+    setPage(0);
+    setFormData({});
+  }
 
   const fetchData = async () => {
     try {
@@ -75,7 +80,8 @@ const App = () => {
     checkFormError,
     error,
     errorMessage,
-    completed: calculateProgress(page, data.length)
+    completed: calculateProgress(page, data.length),
+    startOver
   }
   return (<Container>
     <PaginationProvider value={providerValues}>

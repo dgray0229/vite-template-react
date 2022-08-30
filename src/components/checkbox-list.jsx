@@ -5,9 +5,11 @@ import { Continue } from "../layouts";
 import PaginationContext from "../utils/paginationContext";
 
 const CardContainer = styled.div`
+  max-width: 1200px;
+  margin: 1rem auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `
 

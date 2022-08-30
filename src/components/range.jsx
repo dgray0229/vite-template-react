@@ -4,6 +4,7 @@ import { Image } from "../layouts";
 
 const Fieldset = styled.fieldset`
   border: none;
+  width: 100%;
 `
 const ImageContainer = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ const LabelContainer = styled.div`
   justify-content: space-between;
 `
 const ValueSlider = styled.input`
+  display: block;
   -webkit-appearance: none;
   width: 100%;
   height: 15px;
@@ -48,12 +50,16 @@ const ValueSlider = styled.input`
   }
 `
 const SVG = styled.svg`
+  display: block;
+  margin: 1rem auto;
   position: relative;
+  justify-content: space-between;
   width: 100%;
+  height: 10px;
+  overflow: visible;
 `
 const Rect = styled.rect`
   padding: .0625rem;
-  margin: 0 10px;
 `
 const Slider = (props) => {
   const { options } = props;
@@ -65,7 +71,7 @@ const Slider = (props) => {
         )}
       </ImageContainer>
       <ValueSlider type="range" className="slider" {...props} required />
-      <SVG role="slider" width="100%" height="10">
+      <SVG role="slider">
         {options.map(({ value, id }, index) =>
           <Rect className="range__tick" key={id} value={value} x={`${(index / (options.length - 1)) * 100}%`} y="3"
                 width="2" height="10"/>
